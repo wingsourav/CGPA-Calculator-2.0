@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Production build outputs
+dist/
+**/dist/
+dist-ssr/
+
+# Firebase cache
+.firebase/
+
+# Environment files
+.env
+.env*.local
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+*.log
+calculator .xlsx
