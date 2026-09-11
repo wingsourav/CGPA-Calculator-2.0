@@ -44,6 +44,10 @@ export function CalculatorProvider({ children }) {
     return localStorage.getItem('batchYear') || 'before-2026'; // 'before-2026' | 'after-2026'
   });
 
+  const [showRegulationModal, setShowRegulationModal] = useState(() => {
+    return !localStorage.getItem('batchYearChosen');
+  });
+
   // Track Unsaved Changes
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
@@ -191,6 +195,7 @@ export function CalculatorProvider({ children }) {
   const setBatchYear = (year) => {
     setBatchYearState(year);
     localStorage.setItem('batchYear', year);
+    localStorage.setItem('batchYearChosen', 'true');
     setHasUnsavedChanges(true);
   };
 
@@ -349,6 +354,8 @@ export function CalculatorProvider({ children }) {
         setStudentType,
         batchYear,
         setBatchYear,
+        showRegulationModal,
+        setShowRegulationModal,
         viewMode,
         setViewMode,
         hasUnsavedChanges,
