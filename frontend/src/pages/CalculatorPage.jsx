@@ -24,6 +24,7 @@ export default function CalculatorPage({ onOpenExcelModal }) {
     addSemester,
     deleteSemester,
     studentType,
+    batchYear,
     cgpaResult
   } = useCalculator();
 
@@ -41,9 +42,15 @@ export default function CalculatorPage({ onOpenExcelModal }) {
           <Sparkles className="w-3.5 h-3.5" />
           <span>Semester-Wise Marks Engine</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-          Semester Subject Marksheet
-        </h1>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            Semester Subject Marksheet
+          </h1>
+          <span className="self-start sm:self-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
+            <span>Grading System: {batchYear === 'after-2026' ? 'After 2026' : 'Before 2026'}</span>
+          </span>
+        </div>
         <p className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">
           Real-time marks calculation for <strong className="capitalize text-indigo-600">{studentType}</strong> stream
         </p>

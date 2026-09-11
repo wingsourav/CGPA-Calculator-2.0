@@ -6,7 +6,6 @@ import { CalculatorProvider, useCalculator } from './contexts/CalculatorContext.
 
 import Navbar from './components/Navbar.jsx';
 import ExcelModal from './components/ExcelModal.jsx';
-import RegulationModal from './components/RegulationModal.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 import LoginPage from './pages/LoginPage.jsx';
@@ -15,7 +14,7 @@ import CGPAWiseView from './pages/CGPAWiseView.jsx';
 import PlacementAnalyticsView from './pages/PlacementAnalyticsView.jsx';
 
 function MainRouterContent() {
-  const { viewMode, showRegulationModal, setShowRegulationModal } = useCalculator();
+  const { viewMode } = useCalculator();
   const [isExcelModalOpen, setIsExcelModalOpen] = useState(false);
 
   return (
@@ -56,12 +55,6 @@ function MainRouterContent() {
       <ExcelModal
         isOpen={isExcelModalOpen}
         onClose={() => setIsExcelModalOpen(false)}
-      />
-
-      {/* Regulation / Batch Setup Modal */}
-      <RegulationModal
-        isOpen={showRegulationModal}
-        onClose={() => setShowRegulationModal(false)}
       />
 
     </div>
