@@ -91,22 +91,38 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-2">
               <div className="flex items-center bg-slate-100 p-1 rounded-2xl border border-slate-200 text-xs font-bold">
                 {/* Semester-Wise Tab with Dropdown for Before 2026 / After 2026 */}
-                <div className="relative" ref={semesterDropdownRef}>
+                <div className="relative flex items-center" ref={semesterDropdownRef}>
                   <button
                     type="button"
                     onClick={() => {
                       setViewMode('semester');
                       setShowSemesterMenu(prev => !prev);
                     }}
-                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition-all whitespace-nowrap cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-l-xl transition-all whitespace-nowrap cursor-pointer ${
                       viewMode === 'semester'
                         ? 'bg-indigo-600 text-white shadow-sm font-black'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
                     }`}
-                    title="Click to select Before 2026 or After 2026 regulation"
+                    title="Switch to Semester-Wise view"
                   >
                     <BookOpen className="w-4 h-4 shrink-0" />
                     <span className="font-black">Semester-Wise</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setViewMode('semester');
+                      setShowSemesterMenu(prev => !prev);
+                    }}
+                    className={`flex items-center gap-1 px-2 py-1.5 rounded-r-xl border-l transition-all whitespace-nowrap cursor-pointer ${
+                      viewMode === 'semester'
+                        ? 'bg-indigo-600 text-white border-indigo-500 hover:bg-indigo-700'
+                        : 'text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-200/50'
+                    }`}
+                    title="Select regulation: Before 2026 or After 2026"
+                  >
                     <span
                       className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-md ${
                         viewMode === 'semester'
@@ -117,14 +133,14 @@ export default function Navbar() {
                       {batchYear === 'after-2026' ? 'After 2026' : 'Before 2026'}
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 shrink-0 transition-transform duration-200 stroke-[3] ${
+                      className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 stroke-[3] ${
                         showSemesterMenu ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
 
                   {showSemesterMenu && (
-                    <div className="absolute left-0 mt-2 w-52 bg-white py-1.5 shadow-2xl rounded-2xl border border-slate-200 z-50 animate-fade-in text-xs font-bold text-slate-800">
+                    <div className="absolute left-0 top-full mt-2 w-56 bg-white py-1.5 shadow-2xl rounded-2xl border border-slate-200 z-50 animate-fade-in text-xs font-bold text-slate-800">
                       <div className="px-3.5 py-1.5 text-[10px] font-black uppercase tracking-wider text-slate-400 border-b border-slate-100">
                         Select Regulation
                       </div>
@@ -337,28 +353,43 @@ export default function Navbar() {
           <div className="flex md:hidden items-center justify-between gap-2 pt-1 border-t border-slate-100">
             <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-1 w-full text-[11px] font-bold">
               {/* Semester-Wise Dropdown on Mobile */}
-              <div className="relative shrink-0" ref={mobileSemesterDropdownRef}>
+              <div className="relative flex items-center shrink-0" ref={mobileSemesterDropdownRef}>
                 <button
                   type="button"
                   onClick={() => {
                     setViewMode('semester');
                     setShowMobileSemesterMenu(prev => !prev);
                   }}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-xl transition-all whitespace-nowrap shrink-0 ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-l-xl transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                     viewMode === 'semester'
                       ? 'bg-indigo-600 text-white font-black shadow-sm'
                       : 'bg-slate-100 text-slate-700'
                   }`}
                 >
-                  <BookOpen className="w-3 h-3" />
+                  <BookOpen className="w-3 h-3 shrink-0" />
                   <span>Semester-Wise</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setViewMode('semester');
+                    setShowMobileSemesterMenu(prev => !prev);
+                  }}
+                  className={`flex items-center gap-1 px-1.5 py-1.5 rounded-r-xl border-l transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                    viewMode === 'semester'
+                      ? 'bg-indigo-600 text-white border-indigo-500 hover:bg-indigo-700'
+                      : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
+                  }`}
+                  title="Select regulation"
+                >
                   <span className={`text-[9px] font-extrabold px-1 py-0.5 rounded ${
                     viewMode === 'semester' ? 'bg-indigo-700 text-white' : 'bg-slate-200 text-slate-700'
                   }`}>
                     {batchYear === 'after-2026' ? 'After 2026' : 'Before 2026'}
                   </span>
                   <ChevronDown
-                    className={`w-3 h-3 transition-transform ${
+                    className={`w-3 h-3 transition-transform stroke-[2.5] ${
                       showMobileSemesterMenu ? 'rotate-180' : ''
                     }`}
                   />
