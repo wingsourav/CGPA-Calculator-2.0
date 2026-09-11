@@ -105,19 +105,19 @@ export default function Navbar() {
                     }`}
                     title="Click to select Before 2026 or After 2026 regulation"
                   >
-                    <BookOpen className="w-3.5 h-3.5 shrink-0" />
-                    <span>Semester-Wise</span>
+                    <BookOpen className="w-4 h-4 shrink-0" />
+                    <span className="font-black">Semester-Wise</span>
                     <span
                       className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-md ${
                         viewMode === 'semester'
-                          ? 'bg-indigo-700 text-white border border-indigo-500/60'
+                          ? 'bg-indigo-700 text-white border border-indigo-500/60 shadow-xs'
                           : 'bg-slate-200 text-slate-700'
                       }`}
                     >
                       {batchYear === 'after-2026' ? 'After 2026' : 'Before 2026'}
                     </span>
                     <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      className={`w-4 h-4 shrink-0 transition-transform duration-200 stroke-[3] ${
                         showSemesterMenu ? 'rotate-180' : ''
                       }`}
                     />
